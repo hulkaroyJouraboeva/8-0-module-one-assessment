@@ -158,8 +158,21 @@ function countByRating(movies) {
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(movies, id) {
+  let ambiguousResult = {}; 
 
+  if (movies.length === 0 || (!(movies.includes(id)))) {
+    ambiguousResult = null;
+  }
+
+  for (const eachMovie of movies) {
+    if (eachMovie.imdbID === id) {
+      ambiguousResult = eachMovie;
+    }
+  }
+  return ambiguousResult;
+}
+console.log(findById(exampleMovies, 'tt0892769'))
 /**
  * filterByGenre()
  * -----------------------------
