@@ -74,7 +74,7 @@ function getHighestMetascore(movies) {
   }
   return Number(highestScore);
 }
-console.log(getHighestMetascore(exampleMovies))
+
 /**
  * getAverageIMDBRating()
  * -----------------------------
@@ -115,7 +115,33 @@ function getAverageIMDBRating(movies) {
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+  // {key => movie rating: value => count of movies with the same rating}
+  const ratingsObj = {};
+  let count1 = 0;
+  let count2 = 0;
+  let count3 = 0;
+
+  if (movies.length === 0) {
+    return ratingsObj;
+  }
+
+  for (const eachMovie of movies) {
+    if (eachMovie.rated === 'G') {
+      count1++;
+      ratingsObj[eachMovie.rated] = count1;
+
+    } else if (eachMovie.rated === 'PG') {
+      count2++;
+      ratingsObj[eachMovie.rated] = count2;
+
+    } else if (eachMovie.rated === 'PG-13') {
+      count3++;
+      ratingsObj[eachMovie.rated] = count3;
+    }
+  }
+  return ratingsObj;
+}
 
 /**
  * findById()
