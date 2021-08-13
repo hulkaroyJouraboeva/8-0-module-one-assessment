@@ -217,7 +217,8 @@ function filterByGenre(movies, genre) {
  * Returns all movie objects with a `released` year equal to or less than the given year.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
  * @param {number} year - A year as a number. (e.g. 2000)
- * @returns {Object[]} An array of movies where the `released` year is equal to or less than the inputted year.
+ * @returns {Object[]} An array of movies where the `released` year is equal to or 
+ * less than the inputted year.
  *
  * EXAMPLE:
  *  getAllMoviesReleasedAtOrBeforeYear(movies, 2000);
@@ -233,8 +234,21 @@ function filterByGenre(movies, genre) {
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  // return array of movie objects if the released year is less than or equal to the 'year'
+  const yearArr = [];
 
+  for (const eachMovie of movies) {
+    let formattedDate = eachMovie.released.split(' ');
+    formattedDate = Number(formattedDate[formattedDate.length - 1]);
+
+    if (formattedDate <= year) {
+      yearArr.push(eachMovie);
+    }
+  }
+  return yearArr;
+}
+console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000));
 /**
  * getBiggestBoxOfficeMovie()
  * -----------------------------
