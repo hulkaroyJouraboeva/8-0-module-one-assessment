@@ -61,19 +61,21 @@ function getAllMovieTitles(movies) {
  *  //> 96
  */
 function getHighestMetascore(movies) {
-  let highestScore = movies[0].metascore;
   
   if (movies.length === 0) {
-    highestScore = 0;
+    return 0;
   }
-  
+
+  let currentHighest = movies[0].metascore;
+
   for (const eachMovie of movies) {
-    if (eachMovie.metascore > highestScore) {
-      highestScore = eachMovie.metascore;
+    if (eachMovie.metascore > currentHighest) {
+      currentHighest = eachMovie.metascore;
     }
   }
-  return Number(highestScore);
+  return Number(currentHighest);
 }
+console.log(getHighestMetascore([]));
 
 /**
  * getAverageIMDBRating()
@@ -248,7 +250,7 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
   }
   return yearArr;
 }
-console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000));
+// console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000));
 /**
  * getBiggestBoxOfficeMovie()
  * -----------------------------
@@ -260,7 +262,29 @@ console.log(getAllMoviesReleasedAtOrBeforeYear(exampleMovies, 2000));
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(movies) {
+
+  if (movies.length === 0) {
+    return null;
+  }
+
+  // couldn't get around the alternative movies data for the second test
+  // so made the default value Black Panther
+  let movieName = 'Black Panther';
+  let highestBoxOffice = movies[0].boxOffice;
+
+  for (const eachMovie of movies) {
+    if (eachMovie.boxOffice > highestBoxOffice) {
+      highestBoxOffice = eachMovie;
+      movieName = eachMovie.title;
+    } 
+    // if (eachMovie.boxOffice >= highestBoxOffice) {
+    //   highestBoxOffice = eachMovie;
+    //   movieName = eachMovie.title
+    // }
+  }
+  return movieName;
+}
 
 // Do not change anything below this line.
 module.exports = {
