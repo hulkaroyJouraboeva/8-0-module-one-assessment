@@ -1,5 +1,6 @@
 /*
-  Do not change the line below. If you'd like to run code from this file, you may use the `exampleMovies` variable below to gain access to an array of movies.
+  Do not change the line below. If you'd like to run code from this file, 
+  you may use the `exampleMovies` variable below to gain access to an array of movies.
 
   Keep in mind that your functions must still have and use a parameter for accepting all movies.
 */
@@ -10,7 +11,8 @@ const exampleMovies = require("./movies");
  * getAllMovieTitles()
  * -----------------------------
  * Returns all of titles from an array of movies. If the inputted `movies` array is empty, return `[]`.
- * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
+ * @param {Object[]} movies - An array of movies. 
+ * See the `movies.js` file for an example of this array.
  * @returns {string[]} An array of strings, which are movie titles.
  *
  * EXAMPLE:
@@ -28,7 +30,23 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(movies) {
+  // declare 'moviesArr' and assign an empty []
+  const moviesArr = [];
+
+  // if movies array is empty
+  if (movies.length === 0) {
+    // return an empty array
+    return moviesArr;
+  }
+
+  // loop throuch 'eachMovie' in movies
+  for (const eachMovie of movies) {
+    // push 'eachMovie' names into 'moviesArr'
+    moviesArr.push(eachMovie.title);
+  }
+  return moviesArr;
+}
 
 /**
  * getHighestMetascore()
@@ -41,12 +59,26 @@ function getAllMovieTitles() {}
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function getHighestMetascore(movies) {
+  let highestScore = movies[0].metascore;
+  
+  if (movies.length === 0) {
+    highestScore = 0;
+  }
+  
+  for (const eachMovie of movies) {
+    if (eachMovie.metascore > highestScore) {
+      highestScore = eachMovie.metascore;
+    }
+  }
+  return Number(highestScore);
+}
 
 /**
  * getAverageIMDBRating()
  * -----------------------------
- * Averages all of the IMDB ratings from all movies and returns it, as a number. If the inputted `movies` array is empty, return `0`.
+ * Averages all of the IMDB ratings from all movies and returns it, as a number. 
+ * If the inputted `movies` array is empty, return `0`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
  * @returns {number} The average IMDB rating across all movies.
  *
@@ -59,9 +91,11 @@ function getAverageIMDBRating() {}
 /**
  * countByRating()
  * -----------------------------
- * Returns an object where the keys are movie ratings and the values are the number of movies in the array with that rating. If the inputted `movies` array is empty, return `{}`.
+ * Returns an object where the keys are movie ratings and the values are the number of 
+ * movies in the array with that rating. If the inputted `movies` array is empty, return `{}`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
- * @returns {Object} An object where keys are movie ratings (e.g. "PG") and the values are how many movies in the array have that rating (e.g. 7).
+ * @returns {Object} An object where keys are movie ratings (e.g. "PG") and the values are 
+ * how many movies in the array have that rating (e.g. 7).
  *
  * EXAMPLE:
  *  countByRating(movies);
@@ -72,7 +106,8 @@ function countByRating() {}
 /**
  * findById()
  * -----------------------------
- * Returns a movie object from an array of objects based on the ID. If the inputted `movies` array is empty or the ID does not match any movie, return `null`.
+ * Returns a movie object from an array of objects based on the ID. If the inputted `movies`
+ * array is empty or the ID does not match any movie, return `null`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
  * @param {string} id - A unique `imdbID`.
  * @returns {Object|null} The movie object with the matching `imdbID`.
@@ -88,7 +123,8 @@ function findById() {}
 /**
  * filterByGenre()
  * -----------------------------
- * Returns all movie objects with a matching genre. Case-insensitive. If the inputted `movies` array is empty or no movies match the inputted `genre`, return `[]`.
+ * Returns all movie objects with a matching genre. Case-insensitive. If the inputted `movies` 
+ * array is empty or no movies match the inputted `genre`, return `[]`.
  * @param {Object[]} movies - An array of movies. See the `movies.js` file for an example of this array.
  * @param {string} genre - The genre of a movie. (e.g. "Fantasy")
  * @returns {Object[]} An array of movies where at least one of the genres matches the `genre` inputted.
