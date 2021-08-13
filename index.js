@@ -194,7 +194,22 @@ console.log(findById(exampleMovies, 'tt0892769'))
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(movies, genre) {
+  // if the 'genre' matches return 'eachMovie' object
+  let ambiguousResult = []; 
+
+  if (movies.length === 0 || (!movies.includes(genre))) {
+    ambiguousResult = [];
+  } 
+
+  for (const eachMovie of movies) {
+    if (eachMovie.genre.toLowerCase().includes(genre.toLowerCase())) {
+      ambiguousResult.push(eachMovie);
+    }
+  }
+
+  return ambiguousResult;
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
